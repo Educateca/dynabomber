@@ -16,6 +16,18 @@
         "tilemapTile": true,
         "displayName": "wall"
     },
+    "tile4": {
+        "data": "hwQQABAAAADMzMy9u9y7y9zdzb273LvL3LvLvbvcu8vcu8u9u9y7y9y7y7273LvL3LvLzMzcu8vcu8vc3dy7y9y7y7273LvL3LvLvbvcu8vcu8u9u8zMzNy7y7273N3N3LvLvbvcu8vcu8u9u9y7y9y7y7273LvL3LvLvbvcu8vcu8u9u9y7yw==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "wall01"
+    },
+    "tile3": {
+        "data": "hwQQABAAAADR3d3d3d3dzr27u7u7u7vMvbu7u7u7u8y9u7u7u7u7zL27u7u7u7vMvbu7u7u7u8y9u7u7u7u7zL27u7u7u7vMvbu7u7u7u8y9u7u7u7u7zL27u7u7u7vMvbu7u7u7u8y9u7u7u7u7zL27u7u7u7vMvbu7u7u7u8zOzMzMzMzMzA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "floor01"
+    },
     "level1": {
         "id": "level1",
         "mimeType": "application/mkcd-tilemap",

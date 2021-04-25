@@ -1,5 +1,6 @@
 namespace SpriteKind {
     export const Wall = SpriteKind.create()
+    export const Bomb = SpriteKind.create()
 }
 function manageOverlap (player2: Sprite, wall: Sprite) {
     Comments = "Overlap analysis BOTTOM - RIGHT corner"
@@ -183,6 +184,16 @@ function defineTileMapBorder () {
     14
     ]
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    bomb = sprites.create(assets.image`floor02`, SpriteKind.Bomb)
+    bomb.setPosition(player1.x, player1.y)
+    animation.runImageAnimation(
+    bomb,
+    assets.animation`bomb`,
+    200,
+    true
+    )
+})
 controller.anyButton.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, player1)
 })
@@ -273,6 +284,7 @@ let columnsTileMap = 0
 let indexTileMap = 0
 let indexTempBorder = 0
 let indexBorder = 0
+let bomb: Sprite = null
 let borderYLocations: number[] = []
 let borderXLocations: number[] = []
 let Comments = ""
