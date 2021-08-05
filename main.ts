@@ -267,15 +267,15 @@ function manageBorders (object: Sprite) {
 function createTileMap () {
     let wallList: Sprite[] = []
     indexTileMap = 0
-    columnsTileMap = 5
-    rowsTileMap = 6
-    while (indexTileMap <= 29) {
+    columnsTileMap = 6
+    rowsTileMap = 8
+    while (indexTileMap <= columnsTileMap * rowsTileMap - 1) {
         wallList[indexTileMap] = sprites.create(assets.tile`wall`, SpriteKind.Wall)
         indexTileMap += 1
     }
     for (let i = 0; i <= columnsTileMap - 1; i++) {
         for (let j = 0; j <= rowsTileMap - 1; j++) {
-            wallList[i * rowsTileMap + j].setPosition(i * 35 + 50, j * 30 + 42)
+            wallList[i * rowsTileMap + j].setPosition(i * 34 + 42, j * 25 + 33)
         }
     }
 }
@@ -293,6 +293,16 @@ let depthFront = 0
 let depthMiddle = 0
 let depthBack = 0
 let player1: Sprite = null
+let gameTitle = ["", "DYNABOMBER"]
+let gameOptions = ["Arrows   = Move  ", "Button A = Bomb  ", "Button B = Select", ""]
+let gameSubtitle = ["by", "Espora.net"]
+let mySplashScreen = infoScreens.createSplashScreen()
+mySplashScreen.setTitles(gameTitle)
+mySplashScreen.addHeadlines(gameSubtitle)
+mySplashScreen.addInstructionsList(gameOptions)
+mySplashScreen.build()
+pause(5000)
+mySplashScreen.release()
 tiles.setTilemap(tilemap`level-1`)
 player1 = sprites.create(assets.image`player1-start`, SpriteKind.Player)
 player1.z = 100
