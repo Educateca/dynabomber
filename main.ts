@@ -184,16 +184,6 @@ function defineTileMapBorder () {
     14
     ]
 }
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    bomb = sprites.create(assets.image`floor02`, SpriteKind.Bomb)
-    bomb.setPosition(player1.x, player1.y)
-    animation.runImageAnimation(
-    bomb,
-    assets.animation`bomb`,
-    200,
-    true
-    )
-})
 controller.anyButton.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, player1)
 })
@@ -279,41 +269,75 @@ function createTileMap () {
         }
     }
 }
+let bomb: Sprite = null
 let rowsTileMap = 0
 let columnsTileMap = 0
 let indexTileMap = 0
+let depthMiddle = 0
 let indexTempBorder = 0
 let indexBorder = 0
-let bomb: Sprite = null
 let borderYLocations: number[] = []
 let borderXLocations: number[] = []
-let Comments = ""
+let player1: Sprite = null
 let widthWall = 0
 let depthFront = 0
-let depthMiddle = 0
 let depthBack = 0
-let player1: Sprite = null
-let gameTitle = ["", "DYNABOMBER"]
-let gameOptions = ["Arrows   = Move  ", "Button A = Bomb  ", "Button B = Select", ""]
-let gameSubtitle = ["by", "Espora.net"]
-let mySplashScreen = infoScreens.createSplashScreen()
-mySplashScreen.setTitles(gameTitle)
-mySplashScreen.addHeadlines(gameSubtitle)
-mySplashScreen.addInstructionsList(gameOptions)
-mySplashScreen.build()
-pause(5000)
-mySplashScreen.release()
-tiles.setTilemap(tilemap`level-1`)
-player1 = sprites.create(assets.image`player1-start`, SpriteKind.Player)
-player1.z = 100
-player1.setPosition(16, 16)
-controller.moveSprite(player1)
-scene.cameraFollowSprite(player1)
-depthBack = 80
-depthMiddle = 100
-depthFront = 120
-widthWall = 12
-player1.z = depthMiddle
-defineTileMapBorder()
-createTileMapBorder()
-createTileMap()
+let Comments = ""
+Comments = "SCREENS: 0 = SPLASH, 1 = SETTINGS, 2=> LEVELS"
+let screen2 = 0
+let gameTheme = ""
+forever(function () {
+    Comments = "DEFINE SPLASH, SETTINGS SCREENS AND GAME LEVELS"
+    Comments = "SCREENS: 0 = SPLASH, 1 = SETTINGS, 2=> LEVELS"
+    if (screen2 == 0) {
+        scene.setBackgroundImage(assets.image`splashScreen`)
+        pause(3000)
+        screen2 = 1
+    }
+    if (screen2 == 1) {
+        scene.setBackgroundImage(assets.image`configScreen`)
+        if (controller.A.isPressed()) {
+            gameTheme = "Forest"
+            screen2 = 2
+        }
+        if (controller.B.isPressed()) {
+            gameTheme = "City"
+            screen2 = 2
+        }
+    }
+    if (screen2 == 2) {
+        if (gameTheme == "Forest") {
+            tiles.setTilemap(tilemap`level-1`)
+        }
+        if (gameTheme == "City") {
+            tiles.setTilemap(tilemap`level-1`)
+        }
+        player1 = sprites.create(assets.image`player1-start`, SpriteKind.Player)
+        player1.z = 100
+        player1.setPosition(16, 16)
+        controller.moveSprite(player1)
+        scene.cameraFollowSprite(player1)
+        depthBack = 80
+        depthMiddle = 100
+        depthFront = 120
+        widthWall = 12
+        player1.z = depthMiddle
+        defineTileMapBorder()
+        createTileMapBorder()
+        createTileMap()
+        pause(1000)
+        screen2 = 3
+    }
+})
+forever(function () {
+    if (controller.A.isPressed() && screen2 == 3) {
+        bomb = sprites.create(assets.image`floor02`, SpriteKind.Bomb)
+        bomb.setPosition(player1.x, player1.y)
+        animation.runImageAnimation(
+        bomb,
+        assets.animation`bomb`,
+        200,
+        true
+        )
+    }
+})
