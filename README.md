@@ -1,7 +1,7 @@
  
 
 
-> Open this page at [https://carloshm.github.io/dynabomber/](https://carloshm.github.io/dynabomber/)
+> Open this page at [https://educateca.github.io/dynabomber/](https://educateca.github.io/dynabomber/)
 
 ## Use as Extension
 
@@ -10,15 +10,15 @@ This repository can be added as an **extension** in MakeCode.
 * open [https://arcade.makecode.com/](https://arcade.makecode.com/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
-* search for **https://github.com/carloshm/dynabomber** and import
+* search for **https://github.com/Educateca/dynabomber** and import
 
-## Edit this project ![Build status badge](https://github.com/carloshm/dynabomber/workflows/MakeCode/badge.svg)
+## Edit this project ![Build status badge](https://github.com/Educateca/dynabomber/workflows/MakeCode/badge.svg)
 
 To edit this repository in MakeCode.
 
 * open [https://arcade.makecode.com/](https://arcade.makecode.com/)
 * click on **Import** then click on **Import URL**
-* paste **https://github.com/carloshm/dynabomber** and click import
+* paste **https://github.com/Educateca/dynabomber** and click import
 
 ## Blocks preview
 
